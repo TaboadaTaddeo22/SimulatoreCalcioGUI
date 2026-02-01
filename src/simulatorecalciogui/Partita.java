@@ -1,0 +1,160 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package simulatorecalciogui;
+
+import java.util.*;
+import javax.swing.JTextArea;
+
+/**
+ *
+ * @author casolaro.diego
+ */
+public class Partita {
+    private Squadra squadraCasa;
+    private Squadra squadraTrasferta;
+    private int forzaC, forzaT;
+    private Random random = new Random();
+    private JTextArea tA;
+    private GestoreMessaggi gM;
+   
+    /**
+     * 
+     * @param squadraCasa
+     * @param squadraTrasferta 
+     */
+    public Partita(Squadra squadraCasa, Squadra squadraTrasferta, JTextArea tA){
+        this.squadraTrasferta=squadraTrasferta;
+        this.squadraCasa=squadraCasa;
+        this.forzaC = this.squadraCasa.getForzaTot() - squadraTrasferta.getDifesaTot();
+        this.forzaT = this.squadraTrasferta.getForzaTot() - squadraCasa.getDifesaTot();
+        this.gM = new GestoreMessaggi(tA);
+    }
+   
+    /**
+     * 
+     */
+    public void gioca(){
+        for(int i = 0; i < 91; i++){
+            int prob=random.nextInt(0,100),danno,rndGioca;
+            boolean squadraScelta;
+            rndGioca = random.nextInt(0,11);
+            if(forzaC>=(forzaT*1.5)&&prob>3&&prob<26){
+                //codice di richiamo per mettere un gol alla squadra 1
+                prob=random.nextInt(0,100);
+                segnaGoal(25,55,prob,rndGioca,i);
+            }
+            else if(forzaC>forzaT&&prob>3&&prob<13){
+                //codice di richiamo per mettere un gol alla squadra 1
+                prob=random.nextInt(0,100);
+                segnaGoal(25,70,prob,rndGioca,i);
+            }
+            else if(forzaC<forzaT/1.5&&prob>3&&prob<26){
+                //codice di richiamo per mettere un gol alla squadra 2
+                prob=random.nextInt(0,100);
+                segnaGoal(0,76,prob,rndGioca,i);
+            }
+            else if(forzaC<=forzaT&&prob>3&&prob<13){
+                //codice di richiamo per mettere un gol alla squadra 2
+                prob=random.nextInt(0,100);
+                segnaGoal(0,66,prob,rndGioca,i);
+            }
+            //codice di richiamo all'infortunio
+            if(prob >= 0 && prob <= 3){
+                danno = random.nextInt(1,50);
+                squadraScelta = random.nextBoolean();
+                rndGioca = random.nextInt(0,11);
+                if(squadraScelta){
+                   squadraCasa.getGiocatoreN(rndGioca).infortunio(danno);
+                   gM.stampaInfortunio(squadraCasa, squadraCasa.getGiocatoreN(rndGioca),i);
+                }
+                else{
+                   squadraTrasferta.getGiocatoreN(rndGioca).infortunio(danno);
+                   gM.stampaInfortunio(squadraTrasferta, squadraTrasferta.getGiocatoreN(rndGioca),i);
+                }
+                forzaC = squadraCasa.getForzaTot();
+                forzaT = squadraTrasferta.getForzaTot();
+            }
+            try {
+                Thread.sleep(167);
+            } catch (InterruptedException ex) {
+                System.getLogger(GestoreMessaggi.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            }
+        }
+    }
+
+    public void segnaGoal(int probMin, int probMax, int prob, int rndGioca, int i){
+        if(prob>probMin&&prob<probMax){
+            squadraTrasferta.setGoal(squadraTrasferta.getGoal() + 1);
+            gM.stampaGoal(squadraTrasferta, squadraTrasferta.getGiocatoreN(rndGioca),i);
+        }
+        else{
+            squadraCasa.setGoal(squadraCasa.getGoal() + 1);
+            gM.stampaGoal(squadraCasa, squadraCasa.getGiocatoreN(rndGioca),i);
+        }
+    }
+    /**
+     * 
+     * @return 
+     */
+    public Squadra getSquadraCasa() {
+        return squadraCasa;
+    }
+
+    /**
+     * 
+     * @param squadraCasa 
+     */
+    public void setSquadraCasa(Squadra squadraCasa) {
+        this.squadraCasa = squadraCasa;
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public Squadra getSquadraTrasferta() {
+        return squadraTrasferta;
+    }
+
+    /**
+     * 
+     * @param squadraTrasferta 
+     */
+    public void setSquadraTrasferta(Squadra squadraTrasferta) {
+        this.squadraTrasferta = squadraTrasferta;
+    }
+
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Partita other = (Partita) obj;
+        if (!Objects.equals(this.squadraCasa, other.squadraCasa)) {
+            return false;
+        }
+        return Objects.equals(this.squadraTrasferta, other.squadraTrasferta);
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "La partita fra la squadra di casa " + squadraCasa.getNome() + " e la squadra di trasferta " + squadraTrasferta.getNome() + " e' finita " + squadraCasa.getGoal() + " - " + squadraTrasferta.getGoal();
+    }
+}
