@@ -18,6 +18,7 @@ public class Partita {
     private Random random = new Random();
     private JTextArea tA;
     private GestoreMessaggi gM;
+    private AudioGoal aG;
    
     /**
      * 
@@ -30,6 +31,7 @@ public class Partita {
         this.forzaC = this.squadraCasa.getForzaTot() - squadraTrasferta.getDifesaTot();
         this.forzaT = this.squadraTrasferta.getForzaTot() - squadraCasa.getDifesaTot();
         this.gM = new GestoreMessaggi(tA);
+        this.aG = new AudioGoal();
     }
    
     /**
@@ -88,10 +90,12 @@ public class Partita {
         if(prob>probMin&&prob<probMax){
             squadraTrasferta.setGoal(squadraTrasferta.getGoal() + 1);
             gM.stampaGoal(squadraTrasferta, squadraTrasferta.getGiocatoreN(rndGioca),i);
+            aG.suonoGoal();
         }
         else{
             squadraCasa.setGoal(squadraCasa.getGoal() + 1);
             gM.stampaGoal(squadraCasa, squadraCasa.getGiocatoreN(rndGioca),i);
+            aG.suonoGoal();
         }
     }
     /**

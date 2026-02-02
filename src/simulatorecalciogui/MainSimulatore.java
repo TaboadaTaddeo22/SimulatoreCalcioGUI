@@ -18,10 +18,12 @@ public class MainSimulatore {
     // Attributi
     private ArrayList<Squadra> squadre;
     private HashSet<String> campionati;
+    private AudioGoal aG;
 
     public MainSimulatore() {
         this.squadre = new ArrayList<>();
         this.campionati = new HashSet<>();
+        this.aG = new AudioGoal();
     }
     
     public void avvia() {
@@ -111,10 +113,6 @@ public class MainSimulatore {
                             image = new ImageIcon(url);
                             s.setImmagine(image);
                         }
-                        //
-                        
-                        //image = new ImageIcon("immagini/immagini/" + s.getNome() + "," + s.getCampionato() + " logo png transparent logo png/Image_1.png");
-                        
                     }
                 }
                 
@@ -206,6 +204,7 @@ public class MainSimulatore {
         Partita p = new Partita(sCasaTitolare, sTrasfertaTitolare, tA);
         p.gioca();
         tA.append(p.toString() + "\n");
+        aG.suonoFischioFinale();
     }
     
     public static ImageIcon scaleIconKeepRatio(ImageIcon icon, int maxW, int maxH) {
