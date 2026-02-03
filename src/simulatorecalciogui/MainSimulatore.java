@@ -135,7 +135,7 @@ public class MainSimulatore {
         }
     }
     
-    public void gioca(Squadra sCasa, Squadra sTrasferta, JTextArea tA) {
+    public void gioca(Squadra sCasa, Squadra sTrasferta, JTextArea tA, JLabel lblC, JLabel lblT) {
         GestoreMessaggi gM = new GestoreMessaggi(tA);
         Scanner input = new Scanner(System.in);
         Random rnd = new Random();
@@ -201,7 +201,7 @@ public class MainSimulatore {
         tA.append(sTrasfertaTitolare.toString() + "\n");
         tA.append("\n");
         gM.stampaStadio(sCasaTitolare, sTrasfertaTitolare);
-        Partita p = new Partita(sCasaTitolare, sTrasfertaTitolare, tA);
+        Partita p = new Partita(sCasaTitolare, sTrasfertaTitolare, tA, lblC, lblT);
         p.gioca();
         tA.append(p.toString() + "\n");
         aG.suonoFischioFinale();

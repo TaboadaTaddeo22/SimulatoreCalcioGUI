@@ -4,6 +4,7 @@
  */
 package simulatorecalciogui;
 
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -14,17 +15,21 @@ public class PartitaRunnable implements Runnable {
     private MainSimulatore m;
     private Squadra s1;
     private Squadra s2;
-    private JTextArea t;
+    private JTextArea tA;
+    private JLabel lblC;
+    private JLabel lblT;
 
-    public PartitaRunnable(MainSimulatore m, Squadra s1, Squadra s2, JTextArea t) {
+    public PartitaRunnable(MainSimulatore m, Squadra s1, Squadra s2, JTextArea tA, JLabel lblC, JLabel lblT) {
         this.m = m;
         this.s1 = s1;
         this.s2 = s2;
-        this.t = t;
+        this.tA = tA;
+        this.lblC = lblC;
+        this.lblT = lblT;
     }
     
     @Override
     public void run() {
-        m.gioca(s1, s2, t);
+        m.gioca(s1, s2, tA, lblC, lblT);
     }
 }

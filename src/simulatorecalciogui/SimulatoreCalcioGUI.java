@@ -21,6 +21,7 @@ public class SimulatoreCalcioGUI {
         */
         
         InterfacciaFOFA f = new InterfacciaFOFA();
+        f.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
         f.setVisible(true);
     }
     

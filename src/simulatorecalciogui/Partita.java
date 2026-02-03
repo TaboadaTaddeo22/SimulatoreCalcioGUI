@@ -5,6 +5,7 @@
 package simulatorecalciogui;
 
 import java.util.*;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -19,19 +20,24 @@ public class Partita {
     private JTextArea tA;
     private GestoreMessaggi gM;
     private AudioGoal aG;
+    private JLabel lblC;
+    private JLabel lblT;
    
     /**
      * 
      * @param squadraCasa
      * @param squadraTrasferta 
      */
-    public Partita(Squadra squadraCasa, Squadra squadraTrasferta, JTextArea tA){
+    public Partita(Squadra squadraCasa, Squadra squadraTrasferta, JTextArea tA, JLabel lblC, JLabel lblT){
         this.squadraTrasferta=squadraTrasferta;
         this.squadraCasa=squadraCasa;
         this.forzaC = this.squadraCasa.getForzaTot() - squadraTrasferta.getDifesaTot();
         this.forzaT = this.squadraTrasferta.getForzaTot() - squadraCasa.getDifesaTot();
         this.gM = new GestoreMessaggi(tA);
         this.aG = new AudioGoal();
+        this.lblC = lblC;
+        this.lblT = lblT;
+        this.tA = tA;
     }
    
     /**
@@ -90,11 +96,13 @@ public class Partita {
         if(prob>probMin&&prob<probMax){
             squadraTrasferta.setGoal(squadraTrasferta.getGoal() + 1);
             gM.stampaGoal(squadraTrasferta, squadraTrasferta.getGiocatoreN(rndGioca),i);
+            lblT.setText(String.valueOf(squadraTrasferta.getGoal()));
             aG.suonoGoal();
         }
         else{
             squadraCasa.setGoal(squadraCasa.getGoal() + 1);
             gM.stampaGoal(squadraCasa, squadraCasa.getGiocatoreN(rndGioca),i);
+            lblC.setText(String.valueOf(squadraCasa.getGoal()));
             aG.suonoGoal();
         }
     }
@@ -128,6 +136,22 @@ public class Partita {
      */
     public void setSquadraTrasferta(Squadra squadraTrasferta) {
         this.squadraTrasferta = squadraTrasferta;
+    }
+
+    public JLabel getLblC() {
+        return lblC;
+    }
+
+    public void setLblC(JLabel lblC) {
+        this.lblC = lblC;
+    }
+
+    public JLabel getLblT() {
+        return lblT;
+    }
+
+    public void setLblT(JLabel lblT) {
+        this.lblT = lblT;
     }
 
     /**

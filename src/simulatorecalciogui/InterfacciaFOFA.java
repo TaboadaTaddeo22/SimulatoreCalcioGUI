@@ -19,6 +19,7 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
      * Creates new form FOFAGUI
      */
     public InterfacciaFOFA() {
+        this.setUndecorated(true);
         initComponents();
         m.avvia();
         riempiComboBoxCampionati(cmbCampionatoCasa);
@@ -67,6 +68,7 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(51, 153, 0));
 
         atxPartita.setColumns(20);
+        atxPartita.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         atxPartita.setRows(5);
         jScrollPane1.setViewportView(atxPartita);
 
@@ -74,6 +76,8 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
 
         pnlSquadraTrasferta.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        lblTrasferta.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTrasferta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTrasferta.setText("Squadra in Trasferta");
 
         cmbCampionatoTrasferta.addItemListener(new java.awt.event.ItemListener() {
@@ -106,28 +110,27 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
             .addGroup(pnlSquadraTrasfertaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlSquadraTrasfertaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSquadraTrasfertaLayout.createSequentialGroup()
+                        .addComponent(lblTrasferta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addComponent(cmbCampionatoTrasferta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbSquadraTrasferta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(pnlSquadraTrasfertaLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(lblTrasferta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraTrasfertaLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(pnlSquadraTrasfertaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbSquadraTrasferta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraTrasfertaLayout.createSequentialGroup()
-                        .addComponent(lblImmagineTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraTrasfertaLayout.createSequentialGroup()
-                        .addComponent(lblGoalTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(93, 93, 93))))
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addGroup(pnlSquadraTrasfertaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraTrasfertaLayout.createSequentialGroup()
+                                .addComponent(lblImmagineTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraTrasfertaLayout.createSequentialGroup()
+                                .addComponent(lblGoalTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(93, 93, 93))))))
         );
         pnlSquadraTrasfertaLayout.setVerticalGroup(
             pnlSquadraTrasfertaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSquadraTrasfertaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTrasferta)
-                .addGap(77, 77, 77)
+                .addComponent(lblTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addComponent(cmbCampionatoTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cmbSquadraTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,13 +138,15 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
                 .addComponent(lblImmagineTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblGoalTrasferta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlSquadraTrasferta, java.awt.BorderLayout.LINE_END);
 
         pnlSquadraCasa.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        lblCasa1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblCasa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCasa1.setText("Squadra in Casa");
 
         cmbCampionatoCasa.addItemListener(new java.awt.event.ItemListener() {
@@ -183,19 +188,16 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
                                 .addComponent(lblImmagineCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraCasaLayout.createSequentialGroup()
-                                .addComponent(lblCasa1)
-                                .addGap(78, 78, 78))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSquadraCasaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblGoalCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+                                .addComponent(lblGoalCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(94, 94, 94))))
+                    .addComponent(lblCasa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlSquadraCasaLayout.setVerticalGroup(
             pnlSquadraCasaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSquadraCasaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCasa1)
-                .addGap(77, 77, 77)
+                .addComponent(lblCasa1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(cmbCampionatoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cmbSquadraCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,7 +205,7 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
                 .addComponent(lblImmagineCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblGoalCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlSquadraCasa, java.awt.BorderLayout.LINE_START);
@@ -211,9 +213,11 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
         pnlGioca.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 10, 10));
         pnlGioca.setLayout(new java.awt.BorderLayout(10, 10));
 
-        btnGioca.setText("Gioca");
+        btnGioca.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGioca.setText("§ Gioca §");
         btnGioca.setToolTipText("");
         btnGioca.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        btnGioca.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnGioca.setPreferredSize(new java.awt.Dimension(72, 50));
         btnGioca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,9 +268,12 @@ public class InterfacciaFOFA extends javax.swing.JFrame {
                 sTrasferta = s;
         }
             
-        pR = new PartitaRunnable(m, sCasa, sTrasferta, atxPartita);
+        pR = new PartitaRunnable(m, sCasa, sTrasferta, atxPartita, lblGoalCasa, lblGoalTrasferta);
         Thread thread = new Thread(pR);
         thread.start();
+        
+        lblGoalCasa.setText("0");
+        lblGoalTrasferta.setText("0");
     }//GEN-LAST:event_btnGiocaActionPerformed
 
     public void riempiComboBoxCampionati(JComboBox<String> cmbC) {
